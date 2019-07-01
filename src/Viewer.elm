@@ -119,13 +119,13 @@ Inverse of `coordinatesAt`.
 
 -}
 coordinatesInViewer : Viewer -> ( Float, Float ) -> ( Float, Float )
-coordinatesInViewer viewer ( x, y ) =
+coordinatesInViewer viewer ( xV, yV ) =
     let
         ( ox, oy ) =
             viewer.origin
     in
-    ( x - ox / viewer.scale
-    , y - oy / viewer.scale
+    ( (xV - ox) / viewer.scale
+    , (yV - oy) / viewer.scale
     )
 
 

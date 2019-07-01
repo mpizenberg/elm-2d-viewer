@@ -21,11 +21,11 @@ transform viewer =
 transformString : Float -> ( Float, Float ) -> String
 transformString scale ( ox, oy ) =
     String.concat
-        [ "translate("
+        [ "scale("
+        , String.fromFloat (1.0 / scale)
+        , ") translate("
         , String.fromFloat -ox
         , " "
         , String.fromFloat -oy
-        , ") scale("
-        , String.fromFloat (1.0 / scale)
         , ")"
         ]
