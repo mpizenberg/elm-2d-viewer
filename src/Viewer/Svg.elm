@@ -1,34 +1,31 @@
-module Viewer.Svg exposing (placeIn)
+module Viewer.Svg exposing (transform)
 
 {-| Helper module to transform SVG drawings with a Viewer.
 
-@docs placeIn
+@docs transform
 
 -}
 
-import Svg exposing (Svg)
+import Svg
 import Svg.Attributes
 import Viewer exposing (Viewer)
 
 
-{-| Apply a group transformation to visualize the SVG elements
-as specified by the given viewer.
+{-| Generate the transform attribute from a viewer
 -}
-placeIn : Viewer -> List (Svg msg) -> Svg msg
-placeIn viewer content =
-    let
-        ( ox, oy ) =
-            viewer.origin
+transform : Viewer -> Svg.Attribute msg
+transform viewer =
+    Svg.Attributes.transform (transformString viewer.scale viewer.origin)
 
-        transformString =
-            String.concat <|
-                [ "translate("
-                , String.fromFloat -ox
-                , " "
-                , String.fromFloat -oy
-                , ") scale("
-                , String.fromFloat (1.0 / viewer.scale)
-                , ")"
-                ]
-    in
-    Svg.g [ Svg.Attributes.transform transformString ] content
+
+transformString : Float -> ( Float, Float ) -> String
+transformString scale ( ox, oy ) =
+    String.concat
+        [ "translate("
+        , String.fromFloat -ox
+        , " "
+        , String.fromFloat -oy
+        , ") scale("
+        , String.fromFloat (1.0 / scale)
+        , ")"
+        ]
