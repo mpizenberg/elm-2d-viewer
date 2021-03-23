@@ -233,7 +233,7 @@ zoomOut viewer =
 
 
 {-| Rescale the viewer about a given fix point.
-Very convinient to keep the point under the mouse fix for example.
+Very convenient to keep the point under the mouse fix for example.
 This is equivalent to `rescaleCentered` if the fix point is the center point.
 
     Viewer.rescaleFixPoint scale (Viewer.coordinatesAtCenter viewer) viewer
@@ -258,7 +258,7 @@ rescaleFixPoint scale (( x, y ) as coordinates) viewer =
 
 
 {-| Zoom in, keeping a given fix point.
-Very convinient to keep the point under the mouse fix for example.
+Very convenient to keep the point under the mouse fix for example.
 This is equivalent to `zoomIn` if the fix point is the center point.
 
     Viewer.zoomToward (Viewer.coordinatesAtCenter viewer) viewer
@@ -271,7 +271,7 @@ zoomToward coordinates viewer =
 
 
 {-| Zoom out, keeping a given fix point.
-Very convinient to keep the point under the mouse fix for example.
+Very convenient to keep the point under the mouse fix for example.
 This is equivalent to `zoomOut` if the fix point is the center point.
 
     Viewer.zoomAwayFrom (Viewer.coordinatesAtCenter viewer) viewer
