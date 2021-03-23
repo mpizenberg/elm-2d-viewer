@@ -6,3 +6,6 @@ and transformations available.
 
 The module `Viewer.Svg` provides a function to transform
 a group of SVG elements to visualize them as specified by a viewer.
+
+I suppose additional modules for canvas or webgl could be useful
+as well but are not available for the time being.
