@@ -13,7 +13,7 @@
             "feathericons/elm-feather": "1.5.0",
             "joakin/elm-canvas": "4.3.0",
             "mdgriffith/elm-ui": "1.1.8",
-            "mpizenberg/elm-2d-viewer": "1.1.0"
+            "mpizenberg/elm-2d-viewer": "1.2.0"
         },
         "indirect": {
             "avh4/elm-color": "1.0.0",
