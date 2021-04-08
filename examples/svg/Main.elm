@@ -214,7 +214,7 @@ view { viewer, image } =
                 [ Html.Attributes.width (floor viewerWidth)
                 , Html.Attributes.height (floor viewerHeight)
                 , Html.Events.preventDefaultOn "wheel"
-                    (Decode.map (\msg -> ( msg, True )) wheelDecoder)
+                    (Decode.map (\msg -> ( msg, True )) (wheelDecoder viewer))
                 ]
                 [ Svg.g
                     [ Html.Attributes.style "pointer-events" "none"
@@ -241,14 +241,18 @@ featherIcon icon size =
     Element.html (Icons.toHtml [] (Icons.withSize size icon))
 
 
-wheelDecoder : Decoder Msg
-wheelDecoder =
+wheelDecoder : Viewer -> Decoder Msg
+wheelDecoder viewer =
+    let
+        imageCoords pos =
+            Viewer.coordinatesAt pos viewer
+    in
     Decode.field "deltaY" Decode.float
         |> Decode.andThen
             (\deltaY ->
                 if deltaY > 0 then
-                    Decode.map (ZoomMsg << ZoomAwayFrom) clientPosDecoder
+                    Decode.map (ZoomMsg << ZoomAwayFrom << imageCoords) clientPosDecoder
 
                 else
-                    Decode.map (ZoomMsg << ZoomToward) clientPosDecoder
+                    Decode.map (ZoomMsg << ZoomToward << imageCoords) clientPosDecoder
             )
