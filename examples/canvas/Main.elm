@@ -14,6 +14,7 @@ import Html.Attributes
 import Html.Events
 import Json.Decode as Decode exposing (Decoder, Value)
 import Viewer exposing (Viewer)
+import Viewer.Canvas
 
 
 main : Program Flags Model Msg
@@ -242,18 +243,8 @@ viewState { viewer, texture } =
 
         renderedImage : Canvas.Renderable
         renderedImage =
-            let
-                scale =
-                    1.0 / viewer.scale
-
-                ( ox, oy ) =
-                    viewer.origin
-            in
             Canvas.texture
-                [ Canvas.Settings.Advanced.transform
-                    [ Canvas.Settings.Advanced.scale scale scale
-                    , Canvas.Settings.Advanced.translate -ox -oy
-                    ]
+                [ Viewer.Canvas.transform viewer
                 , Canvas.Settings.Advanced.imageSmoothing False
                 ]
                 ( 0, 0 )
