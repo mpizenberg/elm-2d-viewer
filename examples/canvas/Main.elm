@@ -254,6 +254,7 @@ viewState { viewer, texture } =
                     [ Canvas.Settings.Advanced.scale scale scale
                     , Canvas.Settings.Advanced.translate -ox -oy
                     ]
+                , Canvas.Settings.Advanced.imageSmoothing False
                 ]
                 ( 0, 0 )
                 texture
