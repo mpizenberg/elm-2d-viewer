@@ -1,5 +1,5 @@
 module Viewer exposing
-    ( Viewer, withSize
+    ( Viewer, withSize, resize
     , coordinatesAt, coordinatesAtCenter, coordinatesInViewer
     , centerAtCoordinates, translate, pan
     , fitImage, rescaleCentered, zoomIn, zoomOut, rescaleFixPoint, zoomToward, zoomAwayFrom
@@ -10,7 +10,7 @@ module Viewer exposing
 
 # The Viewer type
 
-@docs Viewer, withSize
+@docs Viewer, withSize, resize
 
 
 # Viewer properties
@@ -68,6 +68,16 @@ withSize size =
     { size = size
     , origin = ( 0.0, 0.0 )
     , scale = 1.0
+    }
+
+
+{-| Update the viewer size while keeping its origin and scale.
+-}
+resize : ( Float, Float ) -> Viewer -> Viewer
+resize newSize { origin, scale } =
+    { size = newSize
+    , origin = origin
+    , scale = scale
     }
 
 
