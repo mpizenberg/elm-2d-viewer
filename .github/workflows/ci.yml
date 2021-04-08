@@ -33,10 +33,11 @@ jobs:
       - name: Install elm and cache the ELM_HOME directory
         uses: mpizenberg/elm-tooling-action@v1.1
         with:
-          cache-key: examples-${{ hashFiles('elm-tooling.json', 'examples/svg/elm.json') }}
+          cache-key: examples-${{ hashFiles('elm-tooling.json', 'examples/svg/elm.json', 'examples/canvas/elm.json') }}
           cache-restore-key: examples
 
       - run: cd examples/svg/ && elm make Main.elm --output=/dev/null
+      - run: cd examples/canvas/ && elm make Main.elm --output=/dev/null
 
   check-formatting:
     name: Check formatting
