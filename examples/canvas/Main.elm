@@ -266,7 +266,7 @@ viewState { viewer, texture } =
                 ]
                 [ clearCanvas, renderedImage ]
     in
-    Element.layout [ Element.clip ] <|
+    Element.layout [ Element.clip, width fill, height fill ] <|
         Element.el
             [ Element.inFront (Element.row [ centerX ] zoomButtons)
             , Element.clip

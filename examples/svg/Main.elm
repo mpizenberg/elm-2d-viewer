@@ -223,7 +223,7 @@ view { viewer, image } =
                     [ Svg.image imgSvgAttributes [] ]
                 ]
     in
-    Element.layout [ Element.clip ] <|
+    Element.layout [ Element.clip, width fill, height fill ] <|
         Element.column [ width fill, height fill ]
             [ Element.html <|
                 Html.node "style" [] [ Html.text ".pixelated { image-rendering: pixelated; image-rendering: crisp-edges; }" ]
